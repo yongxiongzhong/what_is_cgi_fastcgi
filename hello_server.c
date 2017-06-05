@@ -12,7 +12,7 @@ int main()
     
     struct sockaddr_in server_sockaddr;/*声明一个变量，类型为协议地址类型*/
     server_sockaddr.sin_family = AF_INET;/*使用IPv4协议*/
-    server_sockaddr.sin_port = htons(8887);/*监听8887端口*/
+    server_sockaddr.sin_port = htons(8887);/*监听8887端口，一般80端口被占用了，所以用这个*/
     server_sockaddr.sin_addr.s_addr = htonl(INADDR_ANY);/*绑定本机IP，使用宏定义绑定*/
     
     //绑定端口
