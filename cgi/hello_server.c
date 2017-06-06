@@ -46,27 +46,27 @@ int main()
     char req[1024] = {'\0'}; //存放客户端发送的内容，如果是浏览器访问，就是HTTP协议
     if(read(clnt_sock, req, 1024) != 0){
         char *delim = " ";
-	      char *p;
+        char *p;
         char *method, *filename, *query_string;
         /**
          * 通过strtok函数切分HTTP协议内容
          * HTTP协议第一行第一个参数为 请求方式 请求路径 协议版本
          */
-	      method = strtok(req, delim);         // GET
-	      p = strtok(NULL, delim);             // /cgi-bin/get_user.php?id=1 
+        method = strtok(req, delim);         // GET
+        p = strtok(NULL, delim);             // /cgi-bin/get_user.php?id=1 
         filename = strtok(p, "?");           // /cgi-bin/get_user
-	      query_string = strtok(NULL, "?");    // id=1
+        query_string = strtok(NULL, "?");    // id=1
 
         /**
          * 按照CGI协议内容设置环境变量，名字不能乱起，否则CGI程序无法解析
          * 请求方式环境变量名称为REQUEST_METHOD，请求字符串环境变量的名称为QUERY_STRING
          */
-	      putenv(str_join("REQUEST_METHOD=", method));//REQUEST_METHOD环境变量
-	      putenv(str_join("QUERY_STRING=", query_string));//QUERY_STRING环境变量
+        putenv(str_join("REQUEST_METHOD=", method));//REQUEST_METHOD环境变量
+        putenv(str_join("QUERY_STRING=", query_string));//QUERY_STRING环境变量
 
         //通过popen执行php脚本并且读取返回内容
-	      FILE *stream = popen(str_join("php .", filename), "r");
-	      fread(res, sizeof(char), sizeof(res), stream);
+        FILE *stream = popen(str_join("php .", filename), "r");
+        fread(res, sizeof(char), sizeof(res), stream);
 
         write(clnt_sock, res, sizeof(res));//将内容返回到浏览器
     }
