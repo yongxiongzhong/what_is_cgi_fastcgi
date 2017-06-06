@@ -1,4 +1,6 @@
 <?php
+// CGI程序PHP版
+
 $query = $_SERVER['QUERY_STRING'];//获取QUERY_STRING环境变量
 $strArr = explode("=", $query);//切分出id的值
 
