@@ -14,7 +14,7 @@ FCGI_BIND_ADDRESS="127.0.0.1:9008"
  
 ## 派生出多少个 PHP 子进程
 ## 其中不包括主进程
-PHP_FCGI_CHILDREN=1
+PHP_FCGI_CHILDREN=8
  
 ## 每个 PHP 进程处理的最大请求数
 PHP_FCGI_MAX_REQUESTS=4096
