@@ -7,7 +7,7 @@ PHPFCGI='/home/vagrant/php-5.5.10/sapi/cgi/php-cgi'
 PHP_PID="/tmp/php.pid"
  
 ## 绑定 TCP 地址
-FCGI_BIND_ADDRESS="127.0.0.1:9008"
+FCGI_BIND_ADDRESS="127.0.0.1:9004"
  
 ## 绑定到 Unix domain socket
 #FCGI_BIND_ADDRESS="/tmp/php.sock"
