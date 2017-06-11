@@ -4,6 +4,6 @@
 ## 目录说明
 simple - 最简单服务器例子
 
-cgi - PHP版CGI程序实现
+cgi - PHP/Shell版CGI程序实现
 
 fastcgi - 多进程方式启动php-cgi
